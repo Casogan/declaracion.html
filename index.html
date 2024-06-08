@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>confesion</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #000; /* Fondo negro */
+            margin: 0;
+            flex-direction: column;
+            color: white; /* Texto blanco */
+        }
+
+        .container {
+            text-align: center;
+            background-color: #333;
+            padding: 2em;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            position: relative;
+        }
+
+        h1 {
+            margin-bottom: 20px;
+        }
+
+        .buttons {
+            margin-top: 20px;
+            position: relative;
+        }
+
+        button {
+            font-size: 1em;
+            padding: 0.5em 1em;
+            margin: 0 10px;
+            cursor: pointer;
+            border: none;
+            border-radius: 5px;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+
+        #yes-btn {
+            background-color: #4CAF50;
+            color: white;
+        }
+
+        #no-btn {
+            background-color: #f44336;
+            color: white;
+            position: absolute;
+        }
+
+        button:hover {
+            transform: scale(1.1);
+        }
+
+        #response {
+            margin-top: 20px;
+            font-size: 1.2em;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        img {
+            width: 300px; /* Ancho de la imagen */
+            margin-bottom: 20px;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <img src="https://i.pinimg.com/564x/ae/6c/e5/ae6ce5dab6503ee6d6a150b570b035ce.jpg" alt="Invitación">
+        <h1>si quieres ver a tu gato de le a "SI"</h1>
+        <div class="buttons">
+            <button id="yes-btn">Sí</button>
+            <button id="no-btn">No</button>
+        </div>
+        <div id="response"></div>
+    </div>
+    <script>
+        document.getElementById('yes-btn').addEventListener('click', function() {
+            window.location.href = 'response.html'; // Redirige a la página de respuesta
+        });
+
+        const noBtn = document.getElementById('no-btn');
+
+        noBtn.addEventListener('mouseover', function() {
+            const container = document.querySelector('.container');
+            const containerRect = container.getBoundingClientRect();
+            const btnRect = noBtn.getBoundingClientRect();
+            const newTop = Math.random() * (containerRect.height - btnRect.height);
+            const newLeft = Math.random() * (containerRect.width - btnRect.width);
+            noBtn.style.top = newTop + 'px';
+            noBtn.style.left = newLeft + 'px';
+        });
+    </script>
+</body>
+</html>
